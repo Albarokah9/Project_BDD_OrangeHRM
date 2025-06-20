@@ -1,7 +1,8 @@
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
-const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
-const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
+const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
+const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
+
 
 module.exports = defineConfig({
   e2e: {
@@ -10,7 +11,7 @@ module.exports = defineConfig({
     baseUrl: "https://opensource-demo.orangehrmlive.com/",
     setupNodeEvents: async (on, config) => {
       await addCucumberPreprocessorPlugin(on, config, {
-        stepDefinitions: ["cypress/support/Step_Definitions"], // <== path ke step
+        stepDefinitions: ["cypress/step_definitions/**/*.js"], // <== path ke step
       });
 
       on("file:preprocessor", createBundler({
@@ -21,3 +22,4 @@ module.exports = defineConfig({
     },
   },
 });
+
