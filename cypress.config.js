@@ -6,7 +6,7 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/**/*.feature", // Path ke file .feature kamu
+    specPattern: "cypress/e2e/**/*.feature", // Path ke file .feature 
     supportFile: "cypress/support/e2e.js",   // File support utama
     baseUrl: "https://opensource-demo.orangehrmlive.com/",
     setupNodeEvents: async (on, config) => {
