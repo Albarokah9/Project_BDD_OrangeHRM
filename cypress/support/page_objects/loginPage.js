@@ -8,7 +8,7 @@ class LoginPage {
 
     messages = {
         invalidCredentials: () => cy.get('.oxd-alert'),
-
+        RequireMasssage: () => cy.get('.oxd-input-group > .oxd-text'),
     };
 
     visit() {
@@ -37,6 +37,19 @@ class LoginPage {
           .and('contain.text', 'Invalid credentials');
       }
 
+    leavesUsernameFieldEmpty() {
+        this.elements.usernameInput().should('be.empty');
+      }
+
+      verifyRequiredMessage() {
+        this.messages.RequireMasssage()
+          .should('be.visible')
+          .and('contain.text', 'Required');
+      }
+
+      leavesPasswordFieldEmpty() {
+        this.elements.passwordInput().should('be.empty');
+      }
 }
 
 export default new LoginPage();
