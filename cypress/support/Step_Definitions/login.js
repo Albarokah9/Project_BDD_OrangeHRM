@@ -6,12 +6,12 @@ Given('the user is on the login page', () => {
     loginPage.visit();
 });
 // Positive test case for successful login
-When('the user enters {string} as username', (username) => {
-    loginPage.fillUsername(username);
+When('the user enters {string} as Username', (Username) => {
+    loginPage.fillUsername(Username);
 });
 // This step is used to fill the password field
-When('the user enters {string} as password', (password) => {
-    loginPage.fillPassword(password);
+When('the user enters {string} as Password', (Password) => {
+    loginPage.fillPassword(Password);
 });
 // This step is used to click the login button
 When('the user clicks the login button', () => {
@@ -24,4 +24,20 @@ Then('the user should see the {string} heading on the page', (heading) => {
 // Negative test case for invalid login
 Then('the user should see an error message for invalid credentials', () => {
     loginPage.verifyInvalidCredentialsMessage();
+});
+// Negative test case for empty username
+When('the user leaves the Username field empty', () => {
+    loginPage.leavesUsernameFieldEmpty();
+});
+// Verify that the required message is displayed
+Then('the user sees an error massage Required for Username field', () => {
+    loginPage.veifyRequireMessage();
+});
+// Verify that the required message is displayed
+Then('the user sees an error massage Required for Password field', () => {
+    loginPage.veifyRequireMessage();
+});
+// Negative test case for empty password
+When('the user leaves the Password field empty', () => {
+    loginPage.leavesPasswordFieldEmpty();
 });

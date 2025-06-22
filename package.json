@@ -8,6 +8,10 @@
   },
   "scripts": {
   "test": "cypress run --env allure=true",
+  "test:open:chrome": "cypress open --browser chrome",
+  "test:open:firefox": "cypress open --browser firefox",
+  "test:open:edge": "cypress open --browser edge",
+  "test:open:electron": "cypress open --browser electron",
   "test:headless": "cypress run --browser chrome --headless --env allure=true",
   "test:open": "cypress open",
   "allure:generate": "allure generate allure-results --clean -o allure-report",
