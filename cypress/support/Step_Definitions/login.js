@@ -31,11 +31,11 @@ When('the user leaves the Username field empty', () => {
 });
 // Verify that the required message is displayed
 Then('the user sees an error massage Required for Username field', () => {
-    loginPage.veifyRequireMessage();
+    loginPage.verifyRequiredMessage();
 });
 // Verify that the required message is displayed
 Then('the user sees an error massage Required for Password field', () => {
-    loginPage.veifyRequireMessage();
+    loginPage.verifyRequiredMessage();
 });
 // Negative test case for empty password
 When('the user leaves the Password field empty', () => {
