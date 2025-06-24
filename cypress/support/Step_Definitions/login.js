@@ -41,3 +41,15 @@ Then('the user sees an error massage Required for Password field', () => {
 When('the user leaves the Password field empty', () => {
     loginPage.leavesPasswordFieldEmpty();
 });
+// Step untuk klik tombol logout
+When('the user clicks the logout button', () => {
+    loginPage.clickLogoutButton();
+});
+// Click the dropdown button to open the user dropdown menu
+When('the user clicks dropdown button', () => {
+    loginPage.dropdownButton();
+});
+// Step untuk verifikasi redirect ke halaman login
+Then('the user should be redirected to the login page', () => {
+    loginPage.verifyRedirectedToLoginPage();
+});
