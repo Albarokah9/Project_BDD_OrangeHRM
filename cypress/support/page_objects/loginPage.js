@@ -27,29 +27,23 @@ class LoginPage {
         this.elements.loginButton().click();
     }
     verifyDashboardContainsText(expectedText) {
-        this.elements.dashboard()
-          .should('be.visible')
-          .should('contain.text', expectedText);
+        this.elements.dashboard().should('be.visible').should('contain.text', expectedText);
     }
     verifyInvalidCredentialsMessage() {
-        this.messages.invalidCredentials()
-          .should('be.visible')
-          .and('contain.text', 'Invalid credentials');
-      }
+        this.messages.invalidCredentials().should('be.visible').and('contain.text', 'Invalid credentials');
+    }
 
     leavesUsernameFieldEmpty() {
         this.elements.usernameInput().should('be.empty');
-      }
+    }
 
-      verifyRequiredMessage() {
-        this.messages.RequireMasssage()
-          .should('be.visible')
-          .and('contain.text', 'Required');
-      }
+    verifyRequiredMessage() {
+        this.messages.RequireMasssage().should('be.visible').and('contain.text', 'Required');
+    }
 
-      leavesPasswordFieldEmpty() {
+    leavesPasswordFieldEmpty() {
         this.elements.passwordInput().should('be.empty');
-      }
+    }
 }
 
 export default new LoginPage();
