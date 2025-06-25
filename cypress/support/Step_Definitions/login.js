@@ -53,3 +53,19 @@ When('the user clicks dropdown button', () => {
 Then('the user should be redirected to the login page', () => {
     loginPage.verifyRedirectedToLoginPage();
 });
+// Step untuk klik tombol reset password
+When('the user clicks the {string} link', () => {
+    loginPage.elements.forgotPasswordLink().click();
+});
+// Assetion tampilan reset password page
+Then('the user should be redirected to the forgot password page', () => {
+    loginPage.verifyRedirectedToForgotPasswordPage();
+});
+// Step click Button Reset Password
+When('the user clicks the {string} button', () => {
+    loginPage.elements.resetPasswordButton().click();
+});
+// Step untuk verifikasi pesan sukses reset password
+Then('the user should see a confirmation message {string}', () => {
+    loginPage.verifyResetPasswordSuccessMessage();
+});

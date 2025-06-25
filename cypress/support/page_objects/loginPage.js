@@ -6,11 +6,14 @@ class LoginPage {
         dashboard: () => cy.get('.oxd-topbar-header'),
         userdropdown: () => cy.get('.oxd-userdropdown-tab'),
         dropdownLogout: () => cy.get('[href="/web/index.php/auth/logout"]'),
+        forgotPasswordLink: () => cy.get('.orangehrm-login-forgot').contains('Forgot your password?'),
+        resetPasswordButton: () => cy.get('button[type="submit"]').contains('Reset Password'),
     };
 
     messages = {
         invalidCredentials: () => cy.get('.oxd-alert'),
         RequireMasssage: () => cy.get('.oxd-input-group > .oxd-text'),
+        resetPasswordSuccess: () => cy.contains('h6', 'Reset Password link sent successfully'),
     };
 // Goto the login page
     visit() {
@@ -58,6 +61,15 @@ class LoginPage {
 // Verification that the user is on the login page
     verifyRedirectedToLoginPage() {
         cy.url().should('include', 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    }
+// Verification that the user is redirected to the forgot password page
+    verifyRedirectedToForgotPasswordPage() {
+        cy.url().should('include', '/web/index.php/auth/requestPasswordResetCode');
+        this.elements.resetPasswordButton().should('be.visible');
+    }
+// Verification that the reset password success message is displayed
+    verifyResetPasswordSuccessMessage() {
+        this.messages.resetPasswordSuccess().should('be.visible');
     }
 }
 
