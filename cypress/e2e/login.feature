@@ -1,4 +1,4 @@
-Feature: Login Feature
+Feature: User Login Feature
 
     As a user,
     I want to log in to the OrangeHRM website,
