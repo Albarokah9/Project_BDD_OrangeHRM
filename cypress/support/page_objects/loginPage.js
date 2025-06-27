@@ -12,7 +12,7 @@ class LoginPage {
 
     messages = {
         invalidCredentials: () => cy.get('.oxd-alert'),
-        RequireMasssage: () => cy.get('.oxd-input-group > .oxd-text'),
+        RequireMessages: () => cy.get('.oxd-input-group > .oxd-text'),
         resetPasswordSuccess: () => cy.contains('h6', 'Reset Password link sent successfully'),
     };
 // Goto the login page
@@ -45,12 +45,13 @@ class LoginPage {
     }
 // Assertion to verify the required message for username and password fields
     verifyRequiredMessage() {
-        this.messages.RequireMasssage().should('be.visible').and('contain.text', 'Required');
+        this.messages.RequireMessages().should('be.visible').and('contain.text', 'Required');
     }
 // Mengosokan field password
     leavesPasswordFieldEmpty() {
         this.elements.passwordInput().should('be.empty');
     }
+// Click dropdown button to open the user dropdown menu
     dropdownButton() {
         this.elements.userdropdown().click();
     }

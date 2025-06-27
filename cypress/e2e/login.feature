@@ -19,14 +19,14 @@ Feature: User Login Feature
         And the user clicks the login button
         Then the user should see an error message for invalid credentials
 
-    Scenario: Login with empity Username
+    Scenario: Login with empty Username
         When the user leaves the Username field empty
         And the user enters "admin123" as Password
         And the user clicks the login button
-        Then the user sees an error massage Required for Username field
+        Then the user sees an error message Required for Username field
 
     Scenario: Login with empity Password
         When the user enters "Admin" as Username
         And the user leaves the Password field empty
         And the user clicks the login button
-        Then the user sees an error massage Required for Password field
+        Then the user sees an error message Required for Password field

@@ -30,11 +30,11 @@ When('the user leaves the Username field empty', () => {
     loginPage.leavesUsernameFieldEmpty();
 });
 // Verify that the required message is displayed
-Then('the user sees an error massage Required for Username field', () => {
+Then('the user sees an error message Required for Username field', () => {
     loginPage.verifyRequiredMessage();
 });
 // Verify that the required message is displayed
-Then('the user sees an error massage Required for Password field', () => {
+Then('the user sees an error message Required for Password field', () => {
     loginPage.verifyRequiredMessage();
 });
 // Negative test case for empty password
