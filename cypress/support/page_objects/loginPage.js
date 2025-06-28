@@ -8,6 +8,9 @@ class LoginPage {
         dropdownLogout: () => cy.get('[href="/web/index.php/auth/logout"]'),
         forgotPasswordLink: () => cy.get('.orangehrm-login-forgot').contains('Forgot your password?'),
         resetPasswordButton: () => cy.get('button[type="submit"]').contains('Reset Password'),
+        changePasswordButton: () => cy.get('[href="/web/index.php/pim/updatePassword"]').contains('Change Password'),
+        currentPasswordInput: () => cy.get(':nth-child(1) > .oxd-grid-2 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input'),
+        buttonPasswordInChangePassword  : () => cy.get('.user-password-cell > .oxd-input-group > :nth-child(2) > .oxd-input')
     };
 
     messages = {
@@ -36,16 +39,16 @@ class LoginPage {
         this.elements.dashboard().should('be.visible').should('contain.text', expectedText);
     }
 // Asssertion invlaid credentials message
-    verifyInvalidCredentialsMessage() {
-        this.messages.invalidCredentials().should('be.visible').and('contain.text', 'Invalid credentials');
+    verifyInvalidCredentialsMessage(expectedText) {
+        this.messages.invalidCredentials().should('be.visible').and('contain.text', expectedText);
     }
 // Mengosokan field username
     leavesUsernameFieldEmpty() {
         this.elements.usernameInput().should('be.empty');
     }
 // Assertion to verify the required message for username and password fields
-    verifyRequiredMessage() {
-        this.messages.RequireMessages().should('be.visible').and('contain.text', 'Required');
+    verifyRequiredMessage(expectedText) {
+        this.messages.RequireMessages().should('be.visible').and('contain.text', expectedText);
     }
 // Mengosokan field password
     leavesPasswordFieldEmpty() {
@@ -69,8 +72,20 @@ class LoginPage {
         this.elements.resetPasswordButton().should('be.visible');
     }
 // Verification that the reset password success message is displayed
-    verifyResetPasswordSuccessMessage() {
-        this.messages.resetPasswordSuccess().should('be.visible');
+    verifyResetPasswordSuccessMessage(expectedText) {
+        this.messages.resetPasswordSuccess().should('be.visible').and('contain.text', expectedText);
+    }
+// Click the reset password button
+    clickResetPasswordButton() {
+        this.elements.changePasswordButton().click();
+    }
+// Click Current Password input field
+    clickCurrentPasswordInput() {
+        this.elements.currentPasswordInput().click();
+    }
+// fill the new password in the change password button
+fillNewPassword(password) {
+        this.elements.buttonPasswordInChangePassword().clear().type(password);
     }
 }
 
