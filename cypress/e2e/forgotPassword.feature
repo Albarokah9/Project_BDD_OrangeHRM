@@ -6,7 +6,7 @@ Feature: User Forgot Password Functionality
     Background:
         Given the user is on the login page 
 
-    Scenario: User can request a password reset
+    Scenario: TC_FORGOTPASS_01 - User can request a password reset
         When the user clicks the "Forgot Password" link
         Then the user should be redirected to the forgot password page
         When the user enters "Admin" as Username

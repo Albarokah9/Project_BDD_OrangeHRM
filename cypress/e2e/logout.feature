@@ -6,7 +6,7 @@ Feature: User Logout Functionality
     Background:
         Given the user is on the login page 
 
-    Scenario: User can log out successfully
+    Scenario: TC_LOGOUT_01 - User can log out successfully
         When the user enters "Admin" as Username
         And the user enters "admin123" as Password
         And the user clicks the login button

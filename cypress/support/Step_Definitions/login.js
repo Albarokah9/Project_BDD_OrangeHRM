@@ -22,20 +22,20 @@ Then('the user should see the {string} heading on the page', (heading) => {
     loginPage.elements.dashboard().should('be.visible').and('contain.text', heading);
 });
 // Negative test case for invalid login
-Then('the user should see an error message for invalid credentials', () => {
-    loginPage.verifyInvalidCredentialsMessage();
+Then('the user should see an error message for {string}', (errorMessage) => {
+    loginPage.verifyInvalidCredentialsMessage(errorMessage);
 });
 // Negative test case for empty username
 When('the user leaves the Username field empty', () => {
     loginPage.leavesUsernameFieldEmpty();
 });
 // Verify that the required message is displayed
-Then('the user sees an error message Required for Username field', () => {
-    loginPage.verifyRequiredMessage();
+Then('the user sees an error message {string} for Username field', (errorMessage) => {
+    loginPage.verifyRequiredMessage(errorMessage);
 });
 // Verify that the required message is displayed
-Then('the user sees an error message Required for Password field', () => {
-    loginPage.verifyRequiredMessage();
+Then('the user sees an error message {string} for Password field', (errorMessage) => {
+    loginPage.verifyRequiredMessage(errorMessage);
 });
 // Negative test case for empty password
 When('the user leaves the Password field empty', () => {
@@ -66,6 +66,18 @@ When('the user clicks the {string} button', () => {
     loginPage.elements.resetPasswordButton().click();
 });
 // Step untuk verifikasi pesan sukses reset password
-Then('the user should see a confirmation message {string}', () => {
-    loginPage.verifyResetPasswordSuccessMessage();
+Then('the user should see a confirmation message {string}', (message) => {
+    loginPage.verifyResetPasswordSuccessMessage(message);
+});
+// Step untuk klik tombol change password
+When('the user selects "Change Password" from the dropdown', () => {
+    loginPage.elements.changePasswordButton().click();
+});
+// Step untuk mengisi field New Password
+When('the user enters {string} in the Current Password field', (password) => {
+    loginPage.elements.currentPasswordInput().clear().type(password);
+});
+// Step untuk mengisi field New Password
+When('the user enters {string} in the Password field with the requirement: For a strong password, please use a hard to guess combination of text with upper and lower case characters, symbols and numbers', (password) => {
+    loginPage.fillNewPassword(password);
 });
