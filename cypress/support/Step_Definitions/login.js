@@ -62,9 +62,9 @@ Then('the user should be redirected to the forgot password page', () => {
     loginPage.verifyRedirectedToForgotPasswordPage();
 });
 // Step click Button Reset Password
-When('the user clicks the {string} button', () => {
-    loginPage.elements.resetPasswordButton().click();
-});
+// When('the user clicks the {string} button', () => {
+//     loginPage.elements.resetPasswordButton().click();
+// });
 // Step untuk verifikasi pesan sukses reset password
 Then('the user should see a confirmation message {string}', (message) => {
     loginPage.verifyResetPasswordSuccessMessage(message);
@@ -81,3 +81,16 @@ When('the user enters {string} in the Current Password field', (password) => {
 When('the user enters {string} in the Password field with the requirement: For a strong password, please use a hard to guess combination of text with upper and lower case characters, symbols and numbers', (password) => {
     loginPage.fillNewPassword(password);
 });
+// Step untuk mengisi Field Confirm Password
+When('the user enters the same value in the Confirm Password field as in the New Password field {string}', (password) => {
+    loginPage.fillConfirmPassword(password);
+});
+// Step untuk klik tombol apapun berdasarkan teks (misal: "Reset Password", "Save", dll)
+When('the user clicks the {string} button', (buttonText) => {
+    cy.contains('button', buttonText).click();
+});
+// Pesan sukses setelah mengubah password
+Then('the user should see a toast message containing {string}', (message) => {
+    loginPage.messages.toastMessageSuccess().should('be.visible').and('contain.text', message);
+});
+

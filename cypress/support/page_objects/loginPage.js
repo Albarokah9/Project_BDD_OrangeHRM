@@ -1,22 +1,25 @@
 class LoginPage {
     elements = {
-        usernameInput: () => cy.get('input[placeholder="Username"]'),
-        passwordInput: () => cy.get('input[placeholder="Password"]'),
-        loginButton: () => cy.get('button[type="submit"]'),
-        dashboard: () => cy.get('.oxd-topbar-header'),
-        userdropdown: () => cy.get('.oxd-userdropdown-tab'),
-        dropdownLogout: () => cy.get('[href="/web/index.php/auth/logout"]'),
-        forgotPasswordLink: () => cy.get('.orangehrm-login-forgot').contains('Forgot your password?'),
-        resetPasswordButton: () => cy.get('button[type="submit"]').contains('Reset Password'),
-        changePasswordButton: () => cy.get('[href="/web/index.php/pim/updatePassword"]').contains('Change Password'),
-        currentPasswordInput: () => cy.get(':nth-child(1) > .oxd-grid-2 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input'),
-        buttonPasswordInChangePassword  : () => cy.get('.user-password-cell > .oxd-input-group > :nth-child(2) > .oxd-input')
-    };
+    usernameInput: () => cy.get('input[placeholder="Username"]'),
+    passwordInput: () => cy.get('input[placeholder="Password"]'),
+    loginButton: () => cy.get('button[type="submit"]'),
+    dashboard: () => cy.get('.oxd-topbar-header'),
+    userdropdown: () => cy.get('.oxd-userdropdown-tab'),
+    dropdownLogout: () => cy.get('[href="/web/index.php/auth/logout"]'),
+    forgotPasswordLink: () => cy.get('.orangehrm-login-forgot').contains('Forgot your password?'),
+    resetPasswordButton: () => cy.get('button[type="submit"]').contains('Reset Password'),
+    changePasswordButton: () => cy.get('[href="/web/index.php/pim/updatePassword"]').contains('Change Password'),
+    currentPasswordInput: () => cy.get(':nth-child(1) > .oxd-grid-2 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input'),
+    buttonPasswordInChangePassword: () => cy.get('.user-password-cell > .oxd-input-group > :nth-child(2) > .oxd-input'),
+    buttonConfirmPasswordInChangePassword: () => cy.get('.user-password-row > .oxd-grid-2 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input'),
+    saveButton: () => cy.contains('button', 'Save'),
+};
 
     messages = {
-        invalidCredentials: () => cy.get('.oxd-alert'),
-        RequireMessages: () => cy.get('.oxd-input-group > .oxd-text'),
-        resetPasswordSuccess: () => cy.contains('h6', 'Reset Password link sent successfully'),
+    invalidCredentials: () => cy.get('.oxd-alert'),
+    RequireMessages: () => cy.get('.oxd-input-group > .oxd-text'),
+    resetPasswordSuccess: () => cy.contains('h6', 'Reset Password link sent successfully'),
+    toastMessageSuccess: () => cy.get('.oxd-toast'),
     };
 // Goto the login page
     visit() {
@@ -84,8 +87,24 @@ class LoginPage {
         this.elements.currentPasswordInput().click();
     }
 // fill the new password in the change password button
-fillNewPassword(password) {
+    fillNewPassword(password) {
         this.elements.buttonPasswordInChangePassword().clear().type(password);
+    }
+// fill the confirm password in the change password button
+    fillConfirmPassword(password) {
+        this.elements.buttonConfirmPasswordInChangePassword().clear().type(password);
+    }
+// Click the save button in the change password form
+    clickSaveButton() {
+        this.elements.saveButton().click();
+    }
+// Verify that the user sees a confirmation message after changing the password
+    verifyResetPasswordSuccessMessage(expectedText) {
+        this.messages.resetPasswordSuccess().should('be.visible').and('contain.text', expectedText);
+    }
+    // Verify that the user sees a toast message after changing the password
+    verifyToastMessage(expectedText) {
+        this.messages.toastMessageSuccess().should('be.visible').and('contain.text', expectedText);
     }
 }
 
