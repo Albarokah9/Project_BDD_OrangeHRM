@@ -6,7 +6,7 @@ Feature: User Change Password Functionality
     Background:
         Given the user is on the login page
 
-    Scenario: TC_CHGPWD_01 - User can change password with valid data
+    Scenario: TC_CHGPWD_01 - User can change password with valid current password
         When the user enters "Admin" as Username
         And the user enters "admin123" as Password
         And the user clicks the login button

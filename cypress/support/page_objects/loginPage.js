@@ -98,10 +98,6 @@ class LoginPage {
     clickSaveButton() {
         this.elements.saveButton().click();
     }
-// Verify that the user sees a confirmation message after changing the password
-    verifyResetPasswordSuccessMessage(expectedText) {
-        this.messages.resetPasswordSuccess().should('be.visible').and('contain.text', expectedText);
-    }
     // Verify that the user sees a toast message after changing the password
     verifyToastMessage(expectedText) {
         this.messages.toastMessageSuccess().should('be.visible').and('contain.text', expectedText);
