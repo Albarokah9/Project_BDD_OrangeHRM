@@ -89,8 +89,7 @@ When('the user enters the same value in the Confirm Password field as in the New
 When('the user clicks the {string} button', (buttonText) => {
     cy.contains('button', buttonText).click();
 });
-// Pesan sukses setelah mengubah password
+// Toast message verification after changing password
 Then('the user should see a toast message containing {string}', (message) => {
-    loginPage.messages.toastMessageSuccess().should('be.visible').and('contain.text', message);
+    loginPage.messages.toastMessageChangePassword(message);
 });
-
