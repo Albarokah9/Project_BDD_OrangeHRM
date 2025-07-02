@@ -30,3 +30,10 @@ Feature: User Login Feature
         And the user leaves the Password field empty
         And the user clicks the login button
         Then the user sees an error message "Required" for Password field
+
+    Scenario: TC_LOGIN_05 - Validate "Required" error message appears below Username and Password fields
+        When the user leaves the Username field empty
+        And the user leaves the Password field empty
+        And the user clicks the login button
+        Then the user sees an error message "Required" for Username field
+        And the user sees an error message "Required" for Password field    
