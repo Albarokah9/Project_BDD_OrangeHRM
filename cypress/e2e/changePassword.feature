@@ -19,7 +19,7 @@ Feature: User Change Password Functionality
         And the user clicks the "Save" button
         Then the user should see a toast message containing "Successfully Saved"
 
-    Scenario: TC_CHGPWD_01 - User cannot change password with invalid current password
+    Scenario: TC_CHGPWD_02 - User cannot change password with invalid current password
         When the user enters "Admin" as Username
         And the user enters "admin123" as Password
         And the user clicks the login button
